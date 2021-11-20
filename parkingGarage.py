@@ -1,10 +1,8 @@
 class ParkingGarage():
-    def __init__(self, size=100, occupied=50):
-        self.size = size
-        self.occupied = occupied        
-        self.tickets = [range(occupied,size,-1)]
-        self.parkingSpaces = [range(occupied,size,-1)]
-        self.currentTicket = dict.fromkeys(range(occupied),"Not Paid")
+    def __init__(self, size=100, occupied=50):       
+        self.tickets = list(range(size,occupied,-1))
+        self.parkingSpaces = list(range(size,occupied,-1))
+        self.currentTicket = dict.fromkeys(list(range(occupied)),"Not Paid")
 
     def parkCar(self):
         print("Welcome to the parking garage. You are being directed to the first available space")
@@ -31,7 +29,7 @@ class ParkingGarage():
         return
 
     def ticketValid(self):
-        ticket_num = input("What is your ticket number? ")
+        ticket_num = int(input("What is your ticket number? "))
         while ticket_num not in self.currentTicket.keys():
             print("Invalid Ticket Number. Input in a valid ticket number")
             self.ticketValid()
@@ -39,17 +37,17 @@ class ParkingGarage():
 
     def payforParking(self):
         ticket_num = self.ticketValid()
-        payment = input("Please put in the dollar amount of your payment for parking:")
-        if not payment.isdigit() or int(payment) <= 0:
+        payment = input("Please pay $7 dollars for parking:")
+        if not payment.isdigit() or int(payment) < 7:
             print("You have not paid for parking")
         else:
             self.currentTicket[ticket_num] = "Paid"
-            print("Thank you for your payment")
+            print("Thank you for your payment. You have 15 minutes to leave.")
         return
 
     def leaveGarage(self):
         ticket_num = self.ticketValid()
-        if self.currentTickets[ticket_num] == "Paid":
+        if self.currentTicket[ticket_num] == "Paid":
             print("Thank You, have a nice day!")
         else:
             print("Please make a payment for parking")
@@ -60,5 +58,5 @@ class ParkingGarage():
         return
 
     
-myparkinggarage = ParkingGarage(200,12)
+myparkinggarage = ParkingGarage(12,5)
 myparkinggarage.parkCar()
