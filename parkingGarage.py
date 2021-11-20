@@ -17,7 +17,6 @@ class ParkingGarage():
             else:
                 print("Invalid action. Please take another action")
 
-
     def takeTicket(self):
         if self.tickets:
             ticket_num = self.tickets.pop()
