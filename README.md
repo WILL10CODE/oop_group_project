@@ -41,4 +41,11 @@ When the project is completed, commit the final changes, sync all pull requests,
 
 
 ###### List group responsiblities below:
+William's contributions: Instantiation for class Parkinggarage, methods ticketvalidation, leave as well as .pop(), .append() and input methods
+Shouwang's contributions: Methods Payforparking, parkcar and parts of taketicket
+
 ###### Provide name and approxamite line numbers where each person wrote their code
+
+Shouwang's lines: 7 to 18, 25 to 28, 37 to 46, 61 and 62
+William's lines: 1 to 5, 21 to 25, 30 to 35, 48 to 58
+
