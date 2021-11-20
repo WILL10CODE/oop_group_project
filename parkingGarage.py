@@ -2,7 +2,7 @@ class ParkingGarage():
     def __init__(self, size=100, occupied=50):       
         self.tickets = list(range(size,occupied,-1))
         self.parkingSpaces = list(range(size,occupied,-1))
-        self.currentTicket = dict.fromkeys(list(range(occupied)),"Not Paid")
+        self.currentTicket = dict.fromkeys(list(range(1,occupied+1)),"Not Paid")
 
     def parkCar(self):
         print("Welcome to the parking garage. You are being directed to the first available space")
@@ -14,7 +14,6 @@ class ParkingGarage():
                 self.payforParking()
             elif action == "leave":
                 self.leaveGarage()
-                break
             else:
                 print("Invalid action. Please take another action")
 
@@ -35,8 +34,9 @@ class ParkingGarage():
             self.ticketValid()
         return ticket_num
 
-    def payforParking(self):
-        ticket_num = self.ticketValid()
+    def payforParking(self,ticket_num=""):
+        if ticket_num == "":
+            ticket_num = self.ticketValid()
         payment = input("Please pay $7 dollars for parking:")
         if not payment.isdigit() or int(payment) < 7:
             print("You have not paid for parking")
@@ -51,7 +51,7 @@ class ParkingGarage():
             print("Thank You, have a nice day!")
         else:
             print("Please make a payment for parking")
-            self.payforParking()
+            self.payforParking(ticket_num)
             print("Thank You, have a nice day!")
         self.tickets.append(ticket_num)
         self.parkingSpaces.append(ticket_num)    
